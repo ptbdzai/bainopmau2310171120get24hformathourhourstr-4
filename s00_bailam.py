@@ -42,5 +42,12 @@ get_24hformat_hour('11 PM')            | 23                     | 12
 
 #region bailam
 def get_24hformat_hour(hour_str):
-  return 'todo'
+  import re
+  hour = re.findall(r'\d+',hour_str)
+  time = int(hour[0][0:2])
+  hour_str = hour_str.lower()
+  pm = re.findall(r'pm',hour_str)
+  if len(pm)>0:
+    time += 12
+  return str(time)
 #endregion bailam
